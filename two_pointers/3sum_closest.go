@@ -25,13 +25,13 @@ func ThreeSumClosest(nums []int, target int) int {
 	return closestSum
 }
 
-func newClosetSum(a, b, target int) int {
-	aDistance := absDiff(a, target)
-	bDistance := absDiff(b, target)
-	if aDistance < bDistance {
-		return a
+func newClosetSum(closestSum, currentSum, target int) int {
+	closestSumTargetDiff := absDiff(closestSum, target)
+	currentSumTargetDiff := absDiff(currentSum, target)
+	if closestSumTargetDiff < currentSumTargetDiff {
+		return closestSum
 	}
-	return b
+	return currentSum
 }
 
 func absDiff(a, b int) int {
