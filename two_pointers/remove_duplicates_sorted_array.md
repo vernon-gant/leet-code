@@ -1,4 +1,6 @@
-# Intuition
+# [26. Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/)
+
+## Intuition
 
 Since the array is sorted we always know that when we start moving right say from the first number we will meet either the same number or a next unique number.
 That brings us to the point, that if we keep track of a position - n, where we should insert our next unique number(position is initially 1, because the first element is unique in any array)
@@ -9,7 +11,7 @@ and iteratively pass through all "slices" of same numbers or single unique numbe
 ![3](https://github.com/vernon-gant/leet-code/assets/101332387/08c9159d-1b75-44ee-b477-37d1fd19919f)
 
 
-# Approach
+## Approach
 
 1. Initialize a nextInsertIdx  variable with an initial value 1 - the first number in array of any size is unique, so we can easily skip it.
 
@@ -42,7 +44,7 @@ nums[nextInsertIdx] = nums[i]
 nextInsertIdx++
 ```
 
-# Complexity
+## Complexity
 - Time complexity:
 
 O(n) as we iterate over the whole array.
@@ -52,7 +54,7 @@ O(n) as we iterate over the whole array.
 O(1), we use only one extra variable
 
 
-# Code
+## Code
 ```
 func RemoveDuplicates(nums []int) int {
     nextInsertIdx := 1
