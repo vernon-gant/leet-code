@@ -1,10 +1,10 @@
 package main
 
 import (
-	"algos/two_pointers"
+	"algos/recursion"
 	"fmt"
 )
 
 func main() {
-	fmt.Print(two_pointers.RemoveDuplicates([]int{1,1,2}))
+	fmt.Print(recursion.MyPow2(5,-100))
 }
