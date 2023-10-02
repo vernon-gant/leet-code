@@ -24,6 +24,7 @@ func SumOfDigits(n int) int {
 	return n % 10 + SumOfDigits(n / 10)
 }
 
+// 3.
 func ListLength(numbers * []int) int {
 	if len(*numbers) == 0 {
 		return 0
@@ -32,7 +33,7 @@ func ListLength(numbers * []int) int {
 	return 1 + ListLength(numbers)
 }
 
-// 3. + Assume that string must not be trimmed or fine tuned
+// 4. + Assume that string must not be trimmed or fine tuned
 func IsPalindrome(testString string) bool {
 	if len(testString) == 1 || len(testString) == 0 {
 		return true
@@ -44,7 +45,7 @@ func IsPalindrome(testString string) bool {
 }
 
 
-// 4.
+// 5.
 func PrintEvenNumbers(numbers []int) {
 	if len(numbers) == 0 {
 		return
@@ -55,7 +56,7 @@ func PrintEvenNumbers(numbers []int) {
 	PrintEvenNumbers(numbers[1:])
 }
 
-// 5.
+// 6.
 func PrintEvenIndexNumbers(nums []int) {
 	printEvenIndexNumbers(nums,0)
 }
@@ -70,7 +71,7 @@ func printEvenIndexNumbers(numbers []int, idx int) {
 	printEvenIndexNumbers(numbers,idx + 1)
 }
 
-// 6.
+// 7.
 func SecondLargestNumber(numbers []int) int {
 	return secondLargestNumber(numbers,numbers[0],math.MinInt64)
 }
