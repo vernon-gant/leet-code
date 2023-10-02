@@ -11,9 +11,9 @@ func MyPow2(x float64, n int) float64 {
 		return 1
 	}
 	if n < 0 {
-		return (1 / x) * MyPow(x, n + 1)
+		return (1 / x) * MyPow2(x, n + 1)
 	}
-	return x * MyPow(x, n - 1)
+	return x * MyPow2(x, n - 1)
 }
 
 // 2. + Assume n is positive
@@ -33,7 +33,7 @@ func ListLength(numbers * []int) int {
 	return 1 + ListLength(numbers)
 }
 
-// 4. + Assume that string must not be trimmed or fine tuned
+// 4. + Assume that string must not be trimmed or fine tuned and that all characters are low
 func IsPalindrome(testString string) bool {
 	if len(testString) == 1 || len(testString) == 0 {
 		return true
