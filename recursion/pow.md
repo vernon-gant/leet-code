@@ -1,4 +1,6 @@
-# Intuition
+# [50. Pow(x, n)](https://leetcode.com/problems/powx-n/)
+
+## Intuition
 <!-- Describe your first thoughts on how to solve this problem. -->
 
 The naive approach would be to run a loop or recursion n times and du multiplication of x with itself. But what if the number is too big? Say the maximum integer value. Then it is inefficient...
@@ -8,7 +10,7 @@ as 1 + 4 + 8 or 2^0 + 2^2 + 2^3. An in order to sum powers we need to multiply t
 
 So in other words instead of multiplying always with the same base, we can multiply the base with itself and generate bases powered with power of 2. And this power of two comes from bit representation of the pow n number which is reached as we know by halfing the result.
 
-# Approach
+## Approach
 <!-- Describe your approach to solving the problem. -->
 
 Firstly we check the edge cases if the power is 0 or less then 0. In the first case we just return 1 and in the last case we make from x -> 1 / x(remember school math) and make n positive for our convenience. Now we are good to go.
@@ -93,7 +95,7 @@ return 5 * myPowHelper(25,7) equal to 25 * myPowHelper(625,3) equal to 625 * myP
 
 So we need this n-1 to have space to square the base and we return x by n = 1 so that we end up multiplying the final power of x and do not enter endless recursion.
 
-# Complexity
+## Complexity
 - Time complexity:
 <!-- Add your time complexity here, e.g. $$O(n)$$ -->
 
@@ -104,7 +106,7 @@ O(log n)
 
 O(log n) due to call stack space
 
-# Code
+## Code
 ```
 func myPow(x float64, n int) float64 {
 	if n == 0 {
