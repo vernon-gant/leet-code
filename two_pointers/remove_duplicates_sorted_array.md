@@ -4,6 +4,11 @@ Since the array is sorted we always know that when we start moving right say fro
 That brings us to the point, that if we keep track of a position - n, where we should insert our next unique number(position is initially 1, because the first element is unique in any array)
 and iteratively pass through all "slices" of same numbers or single unique numbers, inserting only the first of them to this position n, then we will be able to build at the beginning a sub array of size n containing only unique elements.
 
+![1](https://github.com/vernon-gant/leet-code/assets/101332387/f9faf875-7ca8-4dd7-b7d7-7c1901210f96)
+![2](https://github.com/vernon-gant/leet-code/assets/101332387/99fd5900-7a32-4a4a-8763-10419d7c3867)
+![3](https://github.com/vernon-gant/leet-code/assets/101332387/08c9159d-1b75-44ee-b477-37d1fd19919f)
+
+
 # Approach
 
 1. Initialize a nextInsertIdx  variable with an initial value 1 - the first number in array of any size is unique, so we can easily skip it.
