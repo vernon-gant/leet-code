@@ -6,8 +6,8 @@ import (
 )
 
 func main() {
-	result := recursion.GenerateAllParanthesis(3)
-	for _,entry := range result {
-		fmt.Println(entry)
+	result := recursion.RecursiveFileSearch("..//")
+	for _, entry := range result {
+		fmt.Println(entry.Name())
 	}
 }

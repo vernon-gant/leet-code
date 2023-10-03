@@ -52,16 +52,20 @@ func IsPalindrome(testString string) bool {
 }
 
 // 5.
-func PrintEvenNumbers(numbers *[]int) {
-	if len(*numbers) == 0 {
+func PrintEvenNumbers(numbers []int) {
+	printEvenNumbers(numbers,0)
+}
+
+func printEvenNumbers(numbers []int, index int) {
+	if len(numbers) == index {
 		return
 	}
-	firstElement := (*numbers)[0]
-	if firstElement % 2 == 0 {
-		fmt.Println(firstElement)
+	currentElement := numbers[index]
+	if currentElement% 2 == 0 {
+		fmt.Println(currentElement)
 	}
-	*numbers = (*numbers)[1:]
-	PrintEvenNumbers(numbers)
+	index++
+	printEvenNumbers(numbers,index)
 }
 
 // 6.
@@ -73,7 +77,7 @@ func printEvenIndexNumbers(numbers * []int, idx int) {
 	if idx == len(*numbers) {
 		return
 	}
-	if idx%2 == 0 {
+	if idx % 2 == 0 {
 		fmt.Println((*numbers)[idx])
 	}
 	idx++
@@ -81,45 +85,45 @@ func printEvenIndexNumbers(numbers * []int, idx int) {
 }
 
 // 7.
-func SecondLargestNumber(numbers []int) int {
-	return secondLargestNumber(&numbers, numbers[0], math.MinInt64)
+func FindSecondLargestNumber(numbers []int) int {
+	return findSecondLargestNumber(numbers, numbers[0], math.MinInt64, 0)
 }
 
-func secondLargestNumber(numbers * []int, maxValue, secondMax int) int {
-	if len(*numbers) == 0 {
+func findSecondLargestNumber(numbers []int, maxValue, secondMax, currentIndex int) int {
+	if currentIndex == len(numbers) {
 		return secondMax
 	}
-	firstNumber := (*numbers)[0]
-	if firstNumber > maxValue {
+	currentNumber := numbers[currentIndex]
+	if currentNumber > maxValue {
 		secondMax = maxValue
-		maxValue = firstNumber
+		maxValue = currentNumber
 	} else {
-		secondMax = max(firstNumber, secondMax)
+		secondMax = max(currentNumber, secondMax)
 	}
-	*numbers = (*numbers)[1:]
-	return secondLargestNumber(numbers, maxValue, secondMax)
+	currentIndex++
+	return findSecondLargestNumber(numbers, maxValue, secondMax, currentIndex)
 }
 
 // 8.
 func RecursiveFileSearch(dirName string) []os.DirEntry {
-	fileNames := new([]os.DirEntry)
-	recursiveFileSearch(dirName,fileNames)
-	return *fileNames
+	return recursiveFileSearch(dirName)
 }
 
-func recursiveFileSearch(dirName string, fileNames * []os.DirEntry) {
+func recursiveFileSearch(dirName string) []os.DirEntry {
+	var folderEntries []os.DirEntry
 	entries, err := os.ReadDir(dirName)
 	if err != nil {
 		log.Println("Failed to read directory:", err)
 	}
 	for _, entry := range entries {
 		if !entry.IsDir() {
-			*fileNames = append(*fileNames,entry)
+			folderEntries = append(folderEntries,entry)
 			continue
 		}
 		path := filepath.Join(dirName, entry.Name())
-		recursiveFileSearch(path,fileNames)
+		folderEntries = append(folderEntries,recursiveFileSearch(path)...)
 	}
+	return folderEntries
 }
 
 
