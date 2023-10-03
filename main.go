@@ -2,8 +2,12 @@ package main
 
 import (
 	"algos/recursion"
+	"fmt"
 )
 
 func main() {
-	recursion.GenerateAllParanthesis(3)
+	result := recursion.GenerateAllParanthesis(3)
+	for _,entry := range result {
+		fmt.Println(entry)
+	}
 }

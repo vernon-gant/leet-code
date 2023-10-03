@@ -1,10 +1,5 @@
 package recursion
 
-import (
-	"fmt"
-	"math"
-)
-
 func IsBalancedParanth(expression string) bool {
 	balance := 0
 	return isBalancedParanth(expression,&balance)
@@ -25,22 +20,21 @@ func isBalancedParanth(expression string,balance * int) bool {
 	return isBalancedParanth(expression[1:],balance)
 }
 
-func GenerateAllParanthesis(openNumber int) {
-	expression := "("
-	generateAllParanthesis(expression,openNumber * 2 - 1, -1)
+func GenerateAllParanthesis(openNumber int) []string {
+	result := new([]string)
+	generateAllParanthesis(result,"",0,0,openNumber)
+	return *result
 }
 
-func generateAllParanthesis(expression string, limit, balance int)  {
-	if math.Abs(float64(balance)) > float64(limit / 2) {
+func generateAllParanthesis(result * []string, expression string, open, close int, n int)  {
+	if open == n && close == n {
+		*result = append(*result,expression)
 		return
 	}
-	if limit == 0 {
-		fmt.Println(expression)
-		return
+	if open < n {
+		generateAllParanthesis(result,expression + "(", open + 1, close,n)
 	}
-	limit--
-	generateAllParanthesis(expression + ")",limit,balance + 1)
-	generateAllParanthesis("(" + expression,limit,balance - 1)
-	generateAllParanthesis(expression + "(",limit,balance - 1)
-	generateAllParanthesis(")" + expression,limit,balance + 1)
+	if close < open {
+		generateAllParanthesis(result,expression + ")", open, close+1,n)
+	}
 }
