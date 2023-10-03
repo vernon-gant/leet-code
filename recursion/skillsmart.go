@@ -6,7 +6,6 @@ import (
 	"math"
 	"os"
 	"path/filepath"
-	"strings"
 )
 
 // 1.
@@ -101,6 +100,7 @@ func secondLargestNumber(numbers * []int, maxValue, secondMax int) int {
 	return secondLargestNumber(numbers, maxValue, secondMax)
 }
 
+// 8.
 func RecursiveFileSearch(dirName string) []os.DirEntry {
 	fileNames := new([]os.DirEntry)
 	recursiveFileSearch(dirName,fileNames)
