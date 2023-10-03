@@ -3,8 +3,15 @@ package main
 import (
 	"algos/recursion"
 	"fmt"
+	"sort"
 )
 
 func main() {
-	fmt.Print(recursion.SecondLargestNumber([]int{1,2,3,4,5,6,7,8,9,10}))
+	fileNames := recursion.RecursiveFileSearch("..//")
+	sort.Slice(fileNames, func(i, j int) bool {
+		return fileNames[i].Name() < fileNames[j].Name()
+	})
+	for _, entry := range fileNames {
+		fmt.Println(entry.Name())
+	}
 }
