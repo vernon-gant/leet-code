@@ -1,11 +1,11 @@
 package main
 
 import (
-	"algos/fast_slow"
+	"algos/sliding_window"
 	"fmt"
 )
 
 func main() {
-	result := fast_slow.CircularArrayLoop([]int{2,-1,1,-2,-2})
+	result := sliding_window.FindRepeatedDnaSequences("AAAAAAAAAAA")
 	fmt.Print(result)
 }
