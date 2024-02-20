@@ -6,6 +6,6 @@ import (
 )
 
 func main() {
-	replaced := sliding_window.MinSubArrayLen(4,[]int{1,4,4})
-	fmt.Print(replaced)
+	repeated := sliding_window.FindRepeatedSequences("AGAGCTCCAGAGCTTG",6)
+	fmt.Print(repeated)
 }
