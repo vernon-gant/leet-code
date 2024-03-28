@@ -5,12 +5,13 @@ func IntervalIntersection(firstList [][]int, secondList [][]int) [][]int {
 	if len(firstList) == 0 || len(secondList) == 0 { return result }
 	firstPointer, secondPointer := 0, 0
 	for ; firstPointer < len(firstList) && secondPointer < len(secondList); {
-		if areDisjoint(firstList[firstPointer], secondList[secondPointer]) {
-			moveSmaller(firstList[firstPointer],secondList[secondPointer],&firstPointer,&secondPointer)
+		currentFirst, currentSecond := firstList[firstPointer], secondList[secondPointer]
+		if areDisjoint(currentFirst, currentSecond) {
+			moveSmaller(currentFirst,currentSecond,&firstPointer,&secondPointer)
 			continue
 		}
-		result = append(result, getInterseciont(firstList[firstPointer], secondList[secondPointer]))
-		if firstIntervalEndsEarlier(firstList[firstPointer], secondList[secondPointer]) {
+		result = append(result, getInterseciont(currentFirst, currentSecond))
+		if firstIntervalEndsEarlier(currentFirst, currentSecond) {
 			firstPointer++
 			continue
 		}
