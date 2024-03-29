@@ -2,7 +2,6 @@ package merge_intervals
 
 func IntervalIntersection(firstList [][]int, secondList [][]int) [][]int {
 	result := [][]int{}
-	if len(firstList) == 0 || len(secondList) == 0 { return result }
 	firstPointer, secondPointer := 0, 0
 	for ; firstPointer < len(firstList) && secondPointer < len(secondList); {
 		currentFirst, currentSecond := firstList[firstPointer], secondList[secondPointer]
@@ -44,4 +43,28 @@ func firstIntervalEndsEarlier(first, second []int) bool {
 
 func getInterseciont(first,second []int) []int {
 	return []int{max(first[0],second[0]),min(first[1],second[1])}
+}
+
+//###############################################################################
+
+func IntervalsIntersectionClean(firstList [][]int, secondList [][]int) [][]int {
+	firstPointer, secondPointer := 0, 0
+	intersections := make([][]int, 0)
+
+	for firstPointer < len(firstList) && secondPointer < len(secondList) {
+		intersectionStart := max(firstList[firstPointer][0], secondList[secondPointer][0])
+		intersectionEnd := min(firstList[firstPointer][1], secondList[secondPointer][1])
+
+		if intersectionStart <= intersectionEnd {
+			intersections = append(intersections, []int{intersectionStart, intersectionEnd})
+		}
+
+		if firstList[firstPointer][1] < secondList[secondPointer][1] {
+			firstPointer++
+		} else {
+			secondPointer++
+		}
+	}
+
+	return intersections
 }
