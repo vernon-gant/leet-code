@@ -21,7 +21,7 @@ func (i *Interval) Str() string {
 }
 
 func EmployeeFreeTime(schedule [][]*Interval) []*Interval {
-	var allIntervals, result []*Interval
+	var allIntervals []*Interval
 	for _, singleSchedule := range schedule {
 		allIntervals = append(allIntervals, singleSchedule...)
 	}
@@ -31,6 +31,7 @@ func EmployeeFreeTime(schedule [][]*Interval) []*Interval {
 		}
 		return allIntervals[i].Start < allIntervals[j].Start
 	})
+	var result []*Interval
 	for i := 0; i < len(allIntervals) - 1; i++ {
 		if allIntervals[i+1].Start <= allIntervals[i].End {
 			allIntervals[i + 1].Start = min(allIntervals[i].Start,allIntervals[i+1].Start)
