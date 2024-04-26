@@ -23,3 +23,29 @@ func reverseBetweenReversing(reversed, head *ListNode, currentCounter, reversedL
 	head.Next = reversed
 	return reverseBetweenReversing(head, tail, currentCounter+1, reversedListLength)
 }
+
+//===================================================================================
+
+func reverseBetween(head *EduLinkedListNode, left int, right int) *EduLinkedListNode {
+	dummy := &EduLinkedListNode{next: head}
+	return reverseBetweenHelperEdu(dummy, dummy, head, left, 1, right-left+1)
+}
+
+func reverseBetweenHelperEdu(result, beforeReversed, head *EduLinkedListNode, left, listPointer, reversedListLength int) *EduLinkedListNode {
+	if listPointer < left {
+		return reverseBetweenHelperEdu(result, head, head.next, left, listPointer+1, reversedListLength)
+	}
+	reversed, listRest := reverseBetweenReversingEdu(nil, head, 0, reversedListLength)
+	beforeReversed.next = reversed
+	head.next = listRest
+	return result.next
+}
+
+func reverseBetweenReversingEdu(reversed, head *EduLinkedListNode, currentCounter, reversedListLength int) (*EduLinkedListNode, *EduLinkedListNode) {
+	if currentCounter == reversedListLength {
+		return reversed, head
+	}
+	tail := head.next
+	head.next = reversed
+	return reverseBetweenReversingEdu(head, tail, currentCounter+1, reversedListLength)
+}
