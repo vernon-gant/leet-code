@@ -1,7 +1,7 @@
 package in_place_list_manipulation
 
 func ReorderList(head *ListNode) {
-	insert(head,reverseListReorder(nil, getElementAfterMiddle(head, head)))
+	insert(head, reverseListReorder(nil, getElementAfterMiddle(head, head)))
 }
 
 func insert(head, toInsert *ListNode) {
@@ -15,12 +15,12 @@ func insert(head, toInsert *ListNode) {
 }
 
 func getElementAfterMiddle(slow, fast *ListNode) *ListNode {
-	if fast == nil || fast.Next == nil {
-		elementAfterMiddle := slow.Next
-		slow.Next = nil
-		return elementAfterMiddle
+	if fast != nil && fast.Next != nil {
+		return getElementAfterMiddle(slow.Next, fast.Next.Next)
 	}
-	return getElementAfterMiddle(slow.Next, fast.Next.Next)
+	elementAfterMiddle := slow.Next
+	slow.Next = nil
+	return elementAfterMiddle
 }
 
 func reverseListReorder(reversed, head *ListNode) *ListNode {
@@ -35,7 +35,7 @@ func reverseListReorder(reversed, head *ListNode) *ListNode {
 ////////////////////////////////////////////////////////////////////
 
 func reorderList(head *EduLinkedListNode) {
-	insertEdu(head,reverseListReorderEdu(nil, getElementAfterMiddleEdu(head, head)))
+	insertEdu(head, reverseListReorderEdu(nil, getElementAfterMiddleEdu(head, head)))
 }
 
 func insertEdu(head, toInsert *EduLinkedListNode) {
