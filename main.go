@@ -11,16 +11,16 @@ func main() {
 	three := in_place_list_manipulation.ListNode{Val: 3}
 	four := in_place_list_manipulation.ListNode{Val: 4}
 	five := in_place_list_manipulation.ListNode{Val: 5}
-	/*six := in_place_list_manipulation.ListNode{Val: 6}
+	six := in_place_list_manipulation.ListNode{Val: 6}
 	seven := in_place_list_manipulation.ListNode{Val: 7}
-	eight := in_place_list_manipulation.ListNode{Val: 8}*/
+	eight := in_place_list_manipulation.ListNode{Val: 8}
 	one.Next = &two
 	two.Next = &three
 	three.Next = &four
 	four.Next = &five
-	/*five.Next = &six
+	five.Next = &six
 	six.Next = &seven
-	seven.Next = &eight*/
-	result := in_place_list_manipulation.ReverseEvenLengthGroups(&one)
+	seven.Next = &eight
+	result := in_place_list_manipulation.SwapPairs(&one)
 	fmt.Print(result)
 }
