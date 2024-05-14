@@ -1,10 +1,10 @@
 package main
 
 import (
-	"algos/two_heaps"
+	"algos/top_k_elements"
 	"fmt"
 )
 
 func main() {
-	fmt.Println(two_heaps.MedianSlidingWindow([]int{1,4,2,3}, 4))
+	fmt.Println(top_k_elements.ReorganizeString("vvvvvlo"))
 }
