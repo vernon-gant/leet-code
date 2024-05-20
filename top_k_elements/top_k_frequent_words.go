@@ -15,7 +15,7 @@ func(minHeap * MinHeapTopKWords) Len() int {
 
 func(minHeap * MinHeapTopKWords) Less(i, j int) bool {
     if (*minHeap)[i].Frequency == (*minHeap)[j].Frequency {
-        return (*minHeap)[i].Word < (*minHeap)[j].Word
+        return (*minHeap)[i].Word > (*minHeap)[j].Word
     }
     return (*minHeap)[i].Frequency < (*minHeap)[j].Frequency
 }
