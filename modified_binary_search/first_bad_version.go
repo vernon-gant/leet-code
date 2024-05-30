@@ -19,9 +19,5 @@ func firstBadVersion(n int) int {
             start = toCheck + 1
         }
     }
-    if isBadVersion(end) {
-        return end
-    } else {
-        return end + 1
-    }
+    return start
 }
