@@ -1,10 +1,13 @@
 package main
 
 import (
-	"algos/top_k_elements"
-	"fmt"
+	"algos/modified_binary_search"
 )
 
 func main() {
-	fmt.Println(top_k_elements.ReorganizeString("vvvvvlo"))
+	obj := modified_binary_search.Constructor([]int{1});
+	obj.PickIndex();
+	obj.PickIndex();
+	obj.PickIndex();
+	obj.PickIndex();
 }
