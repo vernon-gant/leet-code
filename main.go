@@ -6,6 +6,6 @@ import (
 )
 
 func main() {
-	obj := modified_binary_search.FindClosestElements([]int{25,41,81,85,103,117,319},3,84)
+	obj := modified_binary_search.Search2([]int{1,0,1,1,1}, 0)
 	fmt.Print(obj)
 }
