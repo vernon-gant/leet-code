@@ -1,43 +1,35 @@
 package two_pointers
 
-import (
-	"math"
-	"sort"
-)
+import "slices"
 
-func ThreeSumClosest(nums []int, target int) int {
-	sort.Ints(nums)
-	closestSum := math.MaxInt32
-	for i := 0; i < len(nums) - 2; i++ {
-		start, end := i + 1, len(nums) - 1
-		for start < end {
-			currentSum := nums[i] + nums[start] + nums[end]
-			closestSum = newClosetSum(closestSum,currentSum,target)
-			if currentSum > target {
-				end--
-			} else if currentSum < target {
-				start++		
-			} else {
-				return target
-			}
+func threeSum(nums []int) [][]int {
+    slices.Sort(nums)
+    result := make([][]int, 0)
+    var start, end, sum int
+    for i := 0; i < len(nums)-2; i++ {
+		if i != 0 && nums[i] == nums[i - 1] {
+			continue
 		}
-	}
-	return closestSum
-}
-
-func newClosetSum(closestSum, currentSum, target int) int {
-	closestSumTargetDiff := absDiff(closestSum, target)
-	currentSumTargetDiff := absDiff(currentSum, target)
-	if closestSumTargetDiff < currentSumTargetDiff {
-		return closestSum
-	}
-	return currentSum
-}
-
-func absDiff(a, b int) int {
-	if a < b {
-		return b - a
-	}
-
-	return a - b
+        start, end = i+1, len(nums)-1
+        for start < end {
+			if start != i + 1 && nums[start] == nums[start - 1] {
+				start++
+				continue
+			}
+			if end != len(nums) - 1 && nums[end] == nums[start + 1] {
+				end--
+				continue
+			}
+            sum = nums[i] + nums[start] + nums[end]
+            if sum == 0 {
+                result = append(result, []int{nums[i], nums[start], nums[end]})
+            }
+            if sum > 0 {
+                end--
+                continue
+            }
+            start++
+        }
+    }
+    return result
 }

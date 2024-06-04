@@ -1,24 +1,32 @@
 package two_pointers
 
-import "unicode"
-
-func isPalindrome(s string) bool {
-	isAlpha := func(sign byte) bool {
-		return unicode.IsLetter(rune(sign)) || unicode.IsDigit(rune(sign))
-	}
+func IsPalindrome(s string) bool {
 	start, end := 0, len(s) - 1
 	for start < end {
-		if !isAlpha(s[start]) {
+		if !isCharacter(s[start]) {
 			start++
-		} else if !isAlpha(s[end]) {
-			end--
-		} else {
-			if unicode.ToLower(rune(s[start])) != unicode.ToLower(rune(s[end])) {
-				return false
-			}
-			start++
-			end--
+			continue
 		}
+		if !isCharacter(s[end]) {
+			end--
+			continue
+		}
+		if toLower(s[start]) != toLower(s[end]) {
+			return false
+		}
+		start++
+		end--
 	}
 	return true
+}
+
+func isCharacter(character byte) bool {
+	return (character >= '0' && character <= '9') || (character >= 'A' && character <= 'Z') || (character >= 'a' && character <= 'z')
+}
+
+func toLower(character byte) byte {
+	if character >= 'A' && character <= 'Z' {
+		return character + 32
+	}
+	return character
 }
