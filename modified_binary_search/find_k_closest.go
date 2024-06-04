@@ -1,54 +1,63 @@
 package modified_binary_search
 
-import (
-    "math"
-    "sort"
-)
-
 func FindClosestElements(arr []int, k int, target int) []int {
-    if target >= arr[len(arr) - 1] {
-		return arr[len(arr) - k :]
+	if len(arr) == k {
+		return arr
 	}
+
 	if target <= arr[0] {
-		return arr[0 : k]
+		return arr[0:k]
 	}
-	start, end := 0, len(arr) - 1
-	var closestElementIdx int
-	for mid := (start + end) / 2; start <= end; mid = (start + end) / 2 {
-		if arr[mid] == target {
-			closestElementIdx = mid
-			break
-		} else if target > arr[mid] {
-			start = mid + 1
+
+	if target >= arr[len(arr)-1] {
+		return arr[len(arr)-k :]
+	}
+
+	firstClosest := binarySearchX(arr, target)
+
+	windowLeft := firstClosest - 1
+	windowRight := windowLeft + 1
+
+	for (windowRight - windowLeft - 1) < k {
+		if windowLeft == -1 {
+			windowRight += 1
+			continue
+		}
+
+		if windowRight == len(arr) || abs(arr[windowLeft]-target) <= abs(arr[windowRight]-target) {
+			windowLeft -= 1
 		} else {
-			end = mid - 1
+			windowRight += 1
 		}
 	}
-	if !(start <= end) {
-		closestElementIdx = findClosest(arr, start, end, target)
-	}
-	left, right, result := closestElementIdx - 1, closestElementIdx + 1, make([]int, k)
-	result[0] = arr[closestElementIdx]
-	for i := 1; i < k; i++ {
-		if right >= len(arr) || (left >= 0 && findClosest(arr, left, right, target) == left) {
-			result[i] = arr[left]
-			left--
-		} else {
-			result[i] = arr[right]
-			right++
-		}
-	}
-	sort.Slice(result, func(i, j int) bool {
-        return result[i] < result[j]
-    })
-	return result
+
+	return arr[windowLeft+1 : windowRight]
 }
 
-func findClosest(arr []int, start, end, target int) int {
-	startDifference := math.Abs(float64(arr[start] - target))
-	endDifference := math.Abs(float64(arr[end] - target))
-	if startDifference < endDifference || (startDifference == endDifference && start < end) {
-		return start
+func binarySearchX(array []int, target int) int {
+	left := 0
+	right := len(array) - 1
+
+	for left <= right {
+		mid := (left + right) / 2
+
+		if array[mid] == target {
+			return mid
+		}
+
+		if array[mid] < target {
+			left = mid + 1
+		} else {
+			right = mid - 1
+		}
 	}
-	return end
+
+	return left
+}
+
+func abs(n int) int {
+	if n < 0 {
+		return -n
+	}
+	return n
 }
