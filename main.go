@@ -5,5 +5,6 @@ import (
 )
 
 func main() {
-	two_pointers.SortColors([]int{2})
+	result := two_pointers.ReverseWords1("  a good   example  ")
+    print(result)
 }
