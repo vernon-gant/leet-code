@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	two_pointers.SortColors([]int{1,2,1})
+	two_pointers.SortColors([]int{2})
 }
