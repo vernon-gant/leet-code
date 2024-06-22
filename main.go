@@ -1,10 +1,10 @@
 package main
 
 import (
-    "algos/two_pointers"
+    "algos/subsets"
 )
 
 func main() {
-	result := two_pointers.ReverseWords1("  a good   example  ")
+    result := subsets.Permute([]int{1,2,3,4})
     print(result)
 }
