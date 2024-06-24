@@ -5,6 +5,6 @@ import (
 )
 
 func main() {
-    result := subsets.Permute([]int{1,2,3,4})
+    result := subsets.LetterCombinations("23")
     print(result)
 }
