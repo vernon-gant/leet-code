@@ -5,6 +5,6 @@ import (
 )
 
 func main() {
-    result := subsets.LetterCombinations("23")
+    result := subsets.GenerateParenthesis(3)
     print(result)
 }
