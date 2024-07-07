@@ -1,10 +1,8 @@
 package main
 
-import (
-    "algos/subsets"
-)
+import "algos/greedy"
 
 func main() {
-    result := subsets.CanCompleteCircuit([]int{5,8,2,8}, []int{6,5,6,6})
+    result := greedy.Jump2([]int{1,1,1,1,1})
     print(result)
 }
