@@ -1,8 +1,8 @@
 package main
 
-import "algos/greedy"
+import "algos/arrays"
 
 func main() {
-    result := greedy.Jump2([]int{1,1,1,1,1})
+    result := arrays.MajorityElement([]int{3,2,3})
     print(result)
 }
