@@ -3,6 +3,6 @@ package main
 import "algos/strings"
 
 func main() {
-    result := strings.EqualFrequency("ceeeec")
+    result := strings.MinDeletions("bbcebab")
     print(result)
 }
