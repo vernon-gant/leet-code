@@ -1,8 +1,8 @@
 package main
 
-import "algos/arrays"
+import "algos/strings"
 
 func main() {
-    result := arrays.MajorityElement([]int{3,2,3})
+    result := strings.EqualFrequency("ceeeec")
     print(result)
 }

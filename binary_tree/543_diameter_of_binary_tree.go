@@ -1,11 +1,5 @@
 package binary_tree
 
-type TreeNode struct {
-    Val   int
-    Left  *TreeNode
-    Right *TreeNode
-}
-
 func diameterOfBinaryTree(root *TreeNode) int {
     deepestNodePath := getDeepestNodePath(root, []*TreeNode{})
     currentNodeDistance := len(deepestNodePath) - 1
