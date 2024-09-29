@@ -1,4 +1,4 @@
-package merge_intervals
+package intervals
 
 import (
 	"container/heap"
