@@ -1,4 +1,4 @@
-package merge_intervals
+package intervals
 
 func Insert(intervals [][]int, newInterval []int) [][]int {
 	currentPosition, result := 0, [][]int{newInterval}

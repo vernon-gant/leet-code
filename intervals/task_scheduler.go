@@ -1,4 +1,4 @@
-package merge_intervals
+package intervals
 
 import "sort"
 
@@ -51,6 +51,6 @@ func leastInterval(tasks []byte, n int) int {
 	if res > len(tasks) {
 		return res
 	}
-	
+
 	return len(tasks)
 }

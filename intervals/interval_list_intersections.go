@@ -1,4 +1,4 @@
-package merge_intervals
+package intervals
 
 func IntervalIntersection(firstList [][]int, secondList [][]int) [][]int {
 	result := [][]int{}
