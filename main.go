@@ -1,8 +1,8 @@
 package main
 
-import "algos/strings"
+import "algos/two_pointers"
 
 func main() {
-    result := strings.EqualFrequency("ceeeec")
+    result := two_pointers.TwoSum([]int{150,24,79,50,88,345,3}, 200)
     print(result)
 }
