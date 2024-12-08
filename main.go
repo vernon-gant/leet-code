@@ -1,8 +1,20 @@
 package main
 
-import "algos/two_pointers"
+import (
+    "algos/depth_first"
+)
 
 func main() {
-    result := two_pointers.TwoSum([]int{150,24,79,50,88,345,3}, 200)
-    print(result)
+    root := depth_first.TreeNode{Val: 1}
+    two := depth_first.TreeNode{ Val: 2 }
+    three := depth_first.TreeNode{ Val : 3}
+    four := depth_first.TreeNode{ Val : 4 }
+    five := depth_first.TreeNode{ Val: 5 }
+    six := depth_first.TreeNode{ Val : 6 }
+    root.Left = &two
+    root.Right = &five
+    two.Left = &three
+    two.Right = &four
+    five.Right = &six
+    depth_first.Flatten(&root)
 }
