@@ -1,11 +1,12 @@
 package main
 
 import (
-    "algos/depth_first"
+    "algos/two_pointers"
+    "fmt"
 )
 
 func main() {
-    root := depth_first.TreeNode{Val: 1}
+    /*root := depth_first.TreeNode{Val: 1}
     two := depth_first.TreeNode{ Val: 2 }
     three := depth_first.TreeNode{ Val : 3}
     four := depth_first.TreeNode{ Val : 4 }
@@ -16,5 +17,8 @@ func main() {
     two.Left = &three
     two.Right = &four
     five.Right = &six
-    depth_first.Flatten(&root)
+    depth_first.Flatten(&root)*/
+
+    result := two_pointers.ValidWordAbbreviation("internationalization", "13iz4n")
+    fmt.Println(result)
 }
