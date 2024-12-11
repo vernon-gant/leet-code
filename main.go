@@ -19,6 +19,6 @@ func main() {
     five.Right = &six
     depth_first.Flatten(&root)*/
 
-    result := two_pointers.ValidWordAbbreviation("internationalization", "13iz4n")
+    result := two_pointers.IsStrobogrammatic2("8698")
     fmt.Println(result)
 }
