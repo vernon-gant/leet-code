@@ -2,14 +2,14 @@ using System;
 using System.Collections.Generic;
 
 // Definiton of a binary tree node class
-// public class EduTreeNode
+// public class TreeNode
 // {
 //     public int data;
-//     public EduTreeNode left;
-//     public EduTreeNode right;
-//     public EduTreeNode parent;
+//     public TreeNode left;
+//     public TreeNode right;
+//     public TreeNode parent;
 
-//     public EduTreeNode(int value)
+//     public TreeNode(int value)
 //     {
 //         this.data = value;
 //         this.left = null;
@@ -20,11 +20,11 @@ using System.Collections.Generic;
 
 public class Solution
 {
-    public EduTreeNode LowestCommonAncestor_HashSet(EduTreeNode p, EduTreeNode q)
+    public TreeNode LowestCommonAncestor_HashSet(TreeNode p, TreeNode q)
     {
-      var visited = new HashSet<EduTreeNode>();
+      var visited = new HashSet<TreeNode>();
 
-      while (p != q)
+      while (true)
       {
         if (p != null && !visited.Add(p)) return p;
 
@@ -33,13 +33,11 @@ public class Solution
         p = p is null ? null : p.parent;
         q = q is null ? null : q.parent;
       }
-
-      return p;
     }
 
-    public EduTreeNode LowestCommonAncestor_TwoPointers(EduTreeNode p, EduTreeNode q)
+    public TreeNode LowestCommonAncestor_TwoPointers(TreeNode p, TreeNode q)
     {
-        EduTreeNode first = p, second = q;
+        TreeNode first = p, second = q;
 
         while(first != second)
         {
