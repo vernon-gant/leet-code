@@ -1,7 +1,7 @@
 package main
 
 import (
-    "algos/two_pointers"
+    "algos/sliding_window"
     "fmt"
 )
 
@@ -19,6 +19,6 @@ func main() {
     five.Right = &six
     depth_first.Flatten(&root)*/
 
-    result := two_pointers.MinMovesToMakePalindrome("xyzyx")
+    result := sliding_window.MinSubArrayLen(7, []int{2,3,1,2,4,3})
     fmt.Println(result)
 }

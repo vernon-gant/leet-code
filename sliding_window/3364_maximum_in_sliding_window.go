@@ -64,7 +64,4 @@ func (maxHeap *MaxHeap) Pop() {
 	tempRootIdx := 0
 	maxHeap.nums[tempRootIdx] = maxHeap.nums[maxHeap.count - 1]
 	maxHeap.nums[maxHeap.count - 1] = math.MinInt
-	
-	for parentIdx := maxHeap.getGretestChildIdx(tempRootIdx); parentIdx != -1
-	
 }
