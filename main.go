@@ -1,7 +1,7 @@
 package main
 
 import (
-    "algos/sliding_window"
+    "algos/fast_slow"
     "fmt"
 )
 
@@ -19,6 +19,19 @@ func main() {
     five.Right = &six
     depth_first.Flatten(&root)*/
 
-    result := sliding_window.MinSubArrayLen(7, []int{2,3,1,2,4,3})
+    first := &fast_slow.ListNode{Val: 81}
+    second := &fast_slow.ListNode{Val: 144}
+    third := &fast_slow.ListNode{Val: 64}
+    fourth := &fast_slow.ListNode{Val: 121}
+    fifth := &fast_slow.ListNode{Val: 25}
+    sixth := &fast_slow.ListNode{Val: 49}
+
+    first.Next = second
+    second.Next = third
+    third.Next = fourth
+    fourth.Next = fifth
+    fifth.Next = sixth
+
+    result := fast_slow.PairSum(first)
     fmt.Println(result)
 }
