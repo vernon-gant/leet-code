@@ -1,36 +1,16 @@
 package sliding_window
 
-func MinSubArrayLen(target int, nums []int) int {
-    left, right, tempSum := 0, 0, 0
-
-    for ; right < len(nums) && tempSum < target; right++ {
-        tempSum += nums[right]
+func minSubArrayLen(target int, nums []int) int {
+    start, sum, result := 0, 0, 100001
+    for end := 0; end < len(nums); end++ {
+        sum += nums[end]
+        for ;sum >= target; start++ {
+            result = min(result, end - start + 1)
+            sum -= nums[start]
+        }
     }
-
-    if tempSum < target {
+    if result == 100001 {
         return 0
     }
-
-    if right == len(nums) {
-        left = getNewLeft(&tempSum, left, target, nums)
-    }
-
-    result := right - left
-
-    for ; right != len(nums); right++ {
-        tempSum += nums[right]
-        left = getNewLeft(&tempSum, left, target, nums)
-        result = min(result, right-left+1)
-    }
-
     return result
-}
-
-func getNewLeft(tempSum *int, left int, target int, nums []int) int {
-    for *tempSum-nums[left] >= target {
-        *tempSum -= nums[left]
-        left++
-    }
-
-    return left
 }
