@@ -1,7 +1,7 @@
 package main
 
 import (
-    "algos/fast_slow"
+    "algos/sliding_window"
     "fmt"
 )
 
@@ -19,7 +19,7 @@ func main() {
     five.Right = &six
     depth_first.Flatten(&root)*/
 
-    first := &fast_slow.ListNode{Val: 81}
+    /*first := &fast_slow.ListNode{Val: 81}
     second := &fast_slow.ListNode{Val: 144}
     third := &fast_slow.ListNode{Val: 64}
     fourth := &fast_slow.ListNode{Val: 121}
@@ -30,8 +30,8 @@ func main() {
     second.Next = third
     third.Next = fourth
     fourth.Next = fifth
-    fifth.Next = sixth
+    fifth.Next = sixth*/
 
-    result := fast_slow.PairSum(first)
+    result := sliding_window.FindMaxAverage([]int{1,12,-5,-6,50,3}, 4)
     fmt.Println(result)
 }
