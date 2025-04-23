@@ -1,45 +1,15 @@
 package sliding_window
 
-func CharacterReplacement(s string, k int) int {
-	if len(s)-k <= 1 {
-		return len(s)
-	}
-
-	uniqueLetterIdx := make(map[byte]int)
-
-	for i := 0; i < len(s); i++ {
-		if _, ok := uniqueLetterIdx[s[i]]; ok {
-			continue
-		}
-		uniqueLetterIdx[s[i]] = i
-	}
-
-	var result int
-
-	for letter, idx := range uniqueLetterIdx {
-		result = max(result, processLetter(letter, idx, s, k))
-	}
-
-	return result
-}
-
-func processLetter(letter byte, idx int, s string, k int) int {
-	var i, j, replaced, count, localMax int = idx, idx, 0, 1, 1
-	for j+1 != len(s) {
-		j++
-		if s[j] == letter {
-			count++
-		} else if replaced <= k {
-			replaced++
-		} else {
-			for count+k != i-j+1 {
-				if s[i] == letter {
-					count--
-				}
-				i++
-			}
-		}
-		localMax = max(localMax, j-i+1)
-	}
-	return localMax
+func characterReplacement(s string, k int) int {
+    occurences := make([]int, 26)
+    start, maxFreq, result := 0, 0, 0
+    for end := 0; end < len(s); end++ {
+        occurences[s[end] - 'A'] = occurences[s[end] - 'A'] + 1
+        maxFreq = max(maxFreq, occurences[s[end] - 'A'])
+        for ;end - start + 1 > maxFreq + k; start++ {
+            occurences[s[start] - 'A'] = occurences[s[start] - 'A'] - 1
+        }
+        result = max(result, end - start + 1)
+    }
+    return result
 }
