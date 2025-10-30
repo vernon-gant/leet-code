@@ -5,16 +5,25 @@ import (
     "fmt"
 )
 
+func makeList(values []int) *recursion.ListNode {
+    if len(values) == 0 {
+        panic("No empty array")
+    }
+
+	list := &recursion.ListNode{}
+    temp := list
+
+	for _, v := range values {
+        temp.Next = &recursion.ListNode{Val: v}
+        temp = temp.Next
+	}
+
+	return list.Next
+}
+
 func main() {
-    first := recursion.ListNode{ Val : 5}
-    second := recursion.ListNode{ Val : 2}
-    third := recursion.ListNode{ Val : 13}
-    fourth := recursion.ListNode{ Val : 3}
-    fifth := recursion.ListNode{ Val : 8}
-    first.Next = &second
-    second.Next = &third
-    third.Next = &fourth
-    fourth.Next = &fifth
-    result := recursion.RemoveNodesNonRec(&first)
+    first := makeList([]int{9,9,9,9,9,9,9})
+    second := makeList([]int{9,9,9,9})
+    result := recursion.AddTwoNumbers(first, second)
     fmt.Println(result)
 }
